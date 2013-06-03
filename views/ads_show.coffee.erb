@@ -1,0 +1,9 @@
+###
+
+###
+
+<% puts @ad[:image_url] %>
+  
+ad = "<img src='<%= @ad[:image_url] %>' />"
+
+$('div.tiny_ads_slot.s<%= @slot_id %>').after ad
