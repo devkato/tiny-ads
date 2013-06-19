@@ -17,6 +17,4 @@ for div in $('div.tiny_ads_slot')
     " src='http://localhost:3000/ads/#{slot_id}'>",
     "</script>"
   ].join('')
-    
-
 

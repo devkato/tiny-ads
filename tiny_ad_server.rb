@@ -136,8 +136,10 @@ class TinyAdServer < Sinatra::Base
 
   # ----------------------------------------------------------------------
   # 成果（conversion）用URL
+  # @TODO
   # ----------------------------------------------------------------------
   get '/step/:step_id' do
+    return ''
   end
 
 
@@ -169,12 +171,16 @@ class TinyAdServer < Sinatra::Base
 
     case ad[:type]
     when 'text'
+      # テキスト + アイコン
+      
       return [
         "<a href='#{click_url}' target='_blank' style='text-decoration:none; padding:10px; border:1px solid #ccc; background-color:#fcfcfc; border-radius:5px;'>",
         "<img src='#{ad[:icon_url]}' style='vertical-align:middle; margin-right:5px;' />#{ad[:text]}",
         "</a>"
       ].join('')
     when 'image'
+      # 画像
+      
       return [
         "<a href='#{click_url}' target='_blank' style='text-decoration:none;'>",
         "<img src='#{ad[:image_url]}' />",
