@@ -6,6 +6,8 @@ source "https://rubygems.org"
 gem 'sinatra'
 gem 'shotgun'
 gem 'coffee-script'
+gem 'yajl-ruby'
+gem 'awesome_print'
 
 group :development do
   gem 'guard'

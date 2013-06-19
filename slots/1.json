@@ -1,0 +1,34 @@
+[
+  {
+    "type":         "image",
+    "weight":       90,
+    "campaign_id":  1,
+    "ad_id":        101,
+    "image_url":    "http://localhost:9393/images/300x300/300x300_001.gif",
+    "url":          "http://www.google.com/"
+  },
+  {
+    "type":         "image",
+    "weight":       8,
+    "campaign_id":  2,
+    "ad_id":        102,
+    "image_url":    "http://localhost:9393/images/300x300/300x300_002.jpg",
+    "url":          "http://www.google.com/"
+  },
+  {
+    "type":         "image",
+    "weight":       1,
+    "campaign_id":  3,
+    "ad_id":        103,
+    "image_url":    "http://localhost:9393/images/300x300/300x300_003.jpg",
+    "url":          "http://www.google.com/"
+  },
+  {
+    "type":         "image",
+    "weight":       1,
+    "campaign_id":  4,
+    "ad_id":        104,
+    "image_url":    "http://localhost:9393/images/300x300/300x300_004.gif",
+    "url":          "http://www.google.com/"
+  }
+]

@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    awesome_print (1.1.0)
     coderay (1.0.9)
     coffee-script (2.2.0)
       coffee-script-source
@@ -52,14 +53,17 @@ GEM
       ref
     thor (0.18.1)
     tilt (1.4.1)
+    yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   coffee-script
   guard
   guard-coffeescript
   shotgun
   sinatra
   therubyracer
+  yajl-ruby

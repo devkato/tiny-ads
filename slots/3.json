@@ -1,0 +1,29 @@
+[
+  {
+    "type":         "text",
+    "weight":       10,
+    "campaign_id":  10,
+    "ad_id":        109,
+    "text":         "いいこと、教えたい。でも売上は(ry",
+    "icon_url":     "http://localhost:9393/images/32x32/32x32_001.png",
+    "url":          "http://www.netprice.co.jp/"
+  },
+  {
+    "type":         "text",
+    "weight":       60,
+    "campaign_id":  10,
+    "ad_id":        110,
+    "text":         "価格比較、一括入稿ならオークファン！",
+    "icon_url":     "http://localhost:9393/images/32x32/32x32_002.png",
+    "url":          "http://aucfan.com/"
+  },
+  {
+    "type":         "text",
+    "weight":       30,
+    "campaign_id":  11,
+    "ad_id":        111,
+    "text":         "このまえネコパンのぬいぐるみ買いました",
+    "icon_url":     "http://localhost:9393/images/32x32/32x32_003.png",
+    "url":          "http://monoco.jp/"
+  }
+]
