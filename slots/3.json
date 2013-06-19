@@ -13,7 +13,7 @@
     "weight":       60,
     "campaign_id":  10,
     "ad_id":        110,
-    "text":         "価格比較、一括入稿ならオークファン！",
+    "text":         "最近上場したオークファンだZE！",
     "icon_url":     "http://localhost:9393/images/32x32/32x32_002.png",
     "url":          "http://aucfan.com/"
   },
@@ -22,7 +22,7 @@
     "weight":       30,
     "campaign_id":  11,
     "ad_id":        111,
-    "text":         "このまえネコパンのぬいぐるみ買いました",
+    "text":         "このまえネコパン買いました",
     "icon_url":     "http://localhost:9393/images/32x32/32x32_003.png",
     "url":          "http://monoco.jp/"
   }

@@ -11,7 +11,7 @@ scriptタグのsrcが広告の呼び出しとなる。
   for (_i = 0, _len = _ref.length; _i < _len; _i++) {
     div = _ref[_i];
     slot_id = $(div).data('slot-id');
-    $(document.body).append(["<scr", "ipt", " async", " type='text/javascript'", " charset='utf-8'", " src='/ads/" + slot_id + "'>", "</script>"].join(''));
+    $(document.body).append(["<scr", "ipt", " async", " type='text/javascript'", " charset='utf-8'", " src='http://localhost:3000/ads/" + slot_id + "'>", "</script>"].join(''));
   }
 
 }).call(this);

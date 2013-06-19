@@ -14,7 +14,7 @@ for div in $('div.tiny_ads_slot')
     " async",
     " type='text/javascript'",
     " charset='utf-8'",
-    " src='/ads/#{slot_id}'>",
+    " src='http://localhost:3000/ads/#{slot_id}'>",
     "</script>"
   ].join('')
     
