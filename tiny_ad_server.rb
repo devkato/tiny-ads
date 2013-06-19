@@ -220,6 +220,8 @@ class TinyAdServer < Sinatra::Base
     ads = filter_by_user_agent(ads, /Chrome/)
     ads = filter_by_device(ads, 'tablet')
 
+    # @TODO weightの再計算
+
     return ads
   end
 
