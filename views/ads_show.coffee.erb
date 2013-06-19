@@ -1,9 +1,11 @@
 ###
 
 ###
-
-<% puts @ad[:image_url] %>
   
-ad = "<img src='<%= @ad[:image_url] %>' />"
+ad = [
+  "<a href='<%= @ad[:url] %>' target='_blank'>",
+  "<img src='<%= @ad[:image_url] %>' />",
+  "</a>"
+].join('')
 
 $('div.tiny_ads_slot.s<%= @slot_id %>').after ad

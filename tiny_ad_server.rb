@@ -29,16 +29,19 @@ class TinyAdServer < Sinatra::Base
 
     @ad = [
       {
-        type: 'image',
-        image_url: 'https://www.google.co.jp/images/srpr/logo4w.png'
+        type:       'image',
+        image_url:  'https://www.google.co.jp/images/srpr/logo4w.png',
+        url:        'http://www.google.com/',
       },
       {
-        type: 'image',
-        image_url: 'http://k.yimg.jp/images/top/sp/logo.gif'
+        type:       'image',
+        image_url:  'http://k.yimg.jp/images/top/sp/logo.gif',
+        url:        'http://yahoo.com/',
       },
       {
-        type: 'image',
-        image_url: 'http://www.microad.co.id/img/logo.png'
+        type:       'image',
+        image_url:  'http://www.microad.co.id/img/logo.png',
+        url:        'http://www.fastbid.asia/',
       },
     ][@slot_id - 1]
 
