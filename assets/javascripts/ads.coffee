@@ -1,5 +1,6 @@
 ###
-
+広告枠毎に表示する広告を呼び出すためにscriptタグをappendする。
+scriptタグのsrcが広告の呼び出しとなる。
 ###
 
 for div in $('div.tiny_ads_slot')

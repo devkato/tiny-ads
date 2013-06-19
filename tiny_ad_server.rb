@@ -20,16 +20,17 @@ end
 # ======================================================================
 class TinyAdServer < Sinatra::Base
 
-  #register Sinatra::Namespace
-
-  disable :sessions
-  disable :logging
-  disable :protection
-
   # ----------------------------------------------------------------------
-  # 設定
+  # 初期化設定
+  # 
+  # - 静的ファイルのディレクトリ指定
+  # - 各アクションに対するloggerの設定
   # ----------------------------------------------------------------------
   configure do
+
+    disable :sessions
+    disable :logging
+    disable :protection
 
     set :root, File.expand_path('../', __FILE__)
 
@@ -42,16 +43,10 @@ class TinyAdServer < Sinatra::Base
     set :imp_logger, imp_logger
 
     # 広告クリックのログを出力するloggerの定義
-    click_logger = Logger.new('./log/imp.log', 'daily')
+    click_logger = Logger.new('./log/click.log', 'daily')
     click_logger.level = Logger::INFO
 
-    set :imp_logger, click_logger
-  end
-
-  # ----------------------------------------------------------------------
-  # 全リクエスト共通の前処理
-  # ----------------------------------------------------------------------
-  before do
+    set :click_logger, click_logger
   end
 
   # ----------------------------------------------------------------------
@@ -105,16 +100,14 @@ class TinyAdServer < Sinatra::Base
       return ""
     end
 
-    ap selected_ad
-
     @html = to_html(selected_ad, @slot_id)
 
-    settings.imp_logger.info [
-      "time:#{Time.now.strftime('%Y-%m-%d %H:%M:%S')}",
-      "slot_id:#{@slot_id}",
-      "campaign_id:#{selected_ad[:campaign_id]}",
-      "ad_id:#{selected_ad[:ad_id]}",
-    ].join("\t")
+    settings.imp_logger.info log_data({
+      slot_id:      @slot_id,
+      campaign_id:  selected_ad[:campaign_id],
+      ad_id:        selected_ad[:ad_id],
+      user_id:      '-'
+    })
 
     coffee erb(:"ads_show.coffee")
   end
@@ -131,12 +124,12 @@ class TinyAdServer < Sinatra::Base
   # ----------------------------------------------------------------------
   get '/click/:slot_id.:campaign_id.:ad_id' do
 
-    settings.click_logger.info [
-      "time:#{Time.now.strftime('%Y-%m-%d %H:%M:%S')}",
-      "slot_id:#{params[:slot_id]}",
-      "campaign_id:#{params[:campaign_id]}",
-      "ad_id:#{params[:ad_id]}"
-    ].join("\t")
+    settings.click_logger.info log_data({
+      slot_id:      params[:slot_id],
+      campaign_id:  params[:campaign_id],
+      ad_id:        params[:ad_id],
+      user_id:      '-',
+    })
 
     redirect params[:url]
   end
@@ -149,6 +142,20 @@ class TinyAdServer < Sinatra::Base
 
 
   private
+
+
+  # ----------------------------------------------------------------------
+  # ログデータとして保存する際のフォーマッティング
+  #
+  # @param options  時刻以外に保存するデータのハッシュ。
+  #                 このkeyがLTSVの各値のkeyになる。
+  # ----------------------------------------------------------------------
+  def log_data(options)
+
+    options.map{|k, v|
+      "#{k}:#{v}"
+    }.unshift("time:#{Time.now.strftime('%Y-%m-%d %H:%M:%S')}").join("\t")
+  end
 
 
   # ----------------------------------------------------------------------
