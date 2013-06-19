@@ -5,11 +5,10 @@ require 'yajl'
 require 'awesome_print'
 require 'logger'
 
-# override
+# ログフォーマットのoverride
 class Logger
   class Formatter
     def call(severity, time, progname, msg)
-      #"#{time.to_s(:db)} #{severity} -- #{msg}\n"
       "#{msg}\n"
     end
   end
@@ -57,6 +56,9 @@ class TinyAdServer < Sinatra::Base
   end
 
   # ----------------------------------------------------------------------
+  # 与えられた広告枠に対して表示する広告の決定を行う
+  #
+  # @param slot_id 広告枠ID
   # ----------------------------------------------------------------------
   get '/ads/:slot_id' do
 
@@ -78,22 +80,36 @@ class TinyAdServer < Sinatra::Base
     ads = filter_ads(ads)
 
     # selection logic
+    #
+    # 1. [0, 100]の数直線上にランダムでthresholdを選択する。
+    # 2. 広告リストをシャッフルする
+    # 3. 広告リストの0番目から、それぞれに与えられている重み（weight）
+    #    を合計していき、その値がthresholdを上回った場合にその広告を
+    #    表示する広告として決定する
+    #
+    # 下記の例の場合は、ad[2]が選択される。
+    #
+    # |-- ad[0] --|---- ad[1] ----|--- ad[2] ---|- ad[3] -|
+    # |--------------------------------*------------------|
+    # 0                                *                 100
+    #                                  *
+    #                               threshold(= 65)
     threshold = rand(100) + 1
     weight_total = 0
-    selected_ad = nil
+    selected_index = 0
 
-    ads.each do |ad|
+    ads = ads.shuffle
+    ads.each.with_index do |ad, i|
 
       if weight_total >= threshold
-        selected_ad = ad
+        selected_index = i
         break
       end
 
       weight_total += ad[:weight]
     end
 
-    # 何かしらの不備で広告が選択されなかった場合の対応
-    selected_ad = ads.first if selected_ad.nil?
+    selected_ad = ads[selected_index]
 
     # 表示すべき広告が存在しない場合は空を返す
     if selected_ad.nil?
@@ -102,6 +118,7 @@ class TinyAdServer < Sinatra::Base
 
     @html = to_html(selected_ad, @slot_id)
 
+    # ログに配信データを保存する
     settings.imp_logger.info log_data({
       slot_id:      @slot_id,
       campaign_id:  selected_ad[:campaign_id],
@@ -124,6 +141,7 @@ class TinyAdServer < Sinatra::Base
   # ----------------------------------------------------------------------
   get '/click/:slot_id.:campaign_id.:ad_id' do
 
+    # ログにクリックデータを保存する
     settings.click_logger.info log_data({
       slot_id:      params[:slot_id],
       campaign_id:  params[:campaign_id],
