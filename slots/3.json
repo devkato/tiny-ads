@@ -4,26 +4,26 @@
     "weight":       10,
     "campaign_id":  10,
     "ad_id":        109,
-    "text":         "いいこと、教えたい。でも売上は(ry",
+    "text":         "テキスト広告のテストその1",
     "icon_url":     "http://localhost:9393/images/32x32/32x32_001.png",
-    "url":          "http://www.netprice.co.jp/"
+    "url":          "http://www.google.com/"
   },
   {
     "type":         "text",
     "weight":       60,
     "campaign_id":  10,
     "ad_id":        110,
-    "text":         "最近上場したオークファンだZE！",
+    "text":         "テキスト広告のテストその2",
     "icon_url":     "http://localhost:9393/images/32x32/32x32_002.png",
-    "url":          "http://aucfan.com/"
+    "url":          "http://www.google.com/"
   },
   {
     "type":         "text",
     "weight":       30,
     "campaign_id":  11,
     "ad_id":        111,
-    "text":         "このまえネコパン買いました",
+    "text":         "テキスト広告のテストその3",
     "icon_url":     "http://localhost:9393/images/32x32/32x32_003.png",
-    "url":          "http://monoco.jp/"
+    "url":          "http://www.google.com/"
   }
 ]

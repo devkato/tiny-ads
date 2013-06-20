@@ -4,7 +4,7 @@
     "weight":       25,
     "campaign_id":  1,
     "ad_id":        105,
-    "image_url":    "http://localhost:9393/images/728x90/728x90_001.jpg",
+    "image_url":    "http://localhost:9393/images/728x90/728x90_001.png",
     "url":          "http://www.google.com/"
   },
   {
@@ -12,7 +12,7 @@
     "weight":       25,
     "campaign_id":  3,
     "ad_id":        106,
-    "image_url":    "http://localhost:9393/images/728x90/728x90_002.jpg",
+    "image_url":    "http://localhost:9393/images/728x90/728x90_002.png",
     "url":          "http://www.google.com/"
   },
   {
@@ -20,7 +20,7 @@
     "weight":       25,
     "campaign_id":  4,
     "ad_id":        107,
-    "image_url":    "http://localhost:9393/images/728x90/728x90_003.jpg",
+    "image_url":    "http://localhost:9393/images/728x90/728x90_003.png",
     "url":          "http://www.google.com/"
   },
   {
@@ -28,7 +28,7 @@
     "weight":       25,
     "campaign_id":  5,
     "ad_id":        108,
-    "image_url":    "http://localhost:9393/images/728x90/728x90_004.gif",
+    "image_url":    "http://localhost:9393/images/728x90/728x90_004.png",
     "url":          "http://www.google.com/"
   }
 ]
