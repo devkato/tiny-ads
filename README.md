@@ -17,3 +17,9 @@ open http://localhost:9393/
 ```sh:how-to-compile-cofeescript
 ./bin/guard
 ```
+
+## logは./log以下に保存されます
+
+```sh:how-to-tail-log
+tail -f ./log/*.log
+```
